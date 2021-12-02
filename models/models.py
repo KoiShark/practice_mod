@@ -16,3 +16,14 @@
 #     def _value_pc(self):
 #         for record in self:
 #             record.value2 = float(record.value) / 100
+
+from odoo import models, fields, api
+
+class parking(models.Model):
+    _name = "practice_mod.parking"
+    _description = "Allows to define parking caracteristics"
+
+    #default search descriptive field
+    name = fields.Char(string = 'Direction')
+    spots = fields.Integer()
+    car_ids = fields.One2Many()

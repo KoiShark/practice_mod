@@ -3,7 +3,7 @@
     'name': "practice_mod",
 
     'summary': """
-        Hello World!! from Odoo.
+        Hello World!! From Odoo.
         Practice Module by Joe.""",
 
     'description': """
