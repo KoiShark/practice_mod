@@ -7,7 +7,7 @@
         Practice Module by Joe.""",
 
     'description': """
-        Long description of module's purpose
+        First practice
     """,
 
     'author': "My Company",
