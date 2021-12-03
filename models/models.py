@@ -29,7 +29,7 @@ class Parking(models.Model):
 
 class Car(models.Model):
     _name = "practice_mod.car"
-    _description = "allows to define the car's caracteristics"
+    _description = "Allows to define the car's caracteristics"
 
     name = fields.Char(string='Plate', size=7, required=True)
     model_car = fields.Char(string='Model', required=True)
