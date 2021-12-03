@@ -44,7 +44,7 @@ class Car(models.Model):
         string='Gas Consumption',
         digits=(4, 1), default=0.0,
         help='Media of consumption 100km')
-
+    damaged = fields.Boolean(string='Damaged', default=False)
     #store=True is not convenient in this case
     years = fields.Integer(string = 'Years', compute = '_get_years')
     description = fields.Text(string = 'Description')
@@ -68,7 +68,7 @@ class Car(models.Model):
 class Maintenance(models.Model):
     _name = 'practice_mod.maintenance'
     _description = 'Allows to define maintenance routine'
-    _order = 'date'
+    _order = 'maintenance_date'
 
     #name = fields.Char()
     maintenance_date = fields.Date(string='Date', required=True, default=fields.date.today())
