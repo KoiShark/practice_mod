@@ -24,16 +24,16 @@ class Parking(models.Model):
     _description = "Allows to define parking caracteristics"
 
     #default search descriptive field
-    name = fields.Char(string = 'Direction')
-    spots = fields.Integer(string = 'Spots')
+    name = fields.Char(string='Direction', required=True)
+    spots = fields.Integer(string='Spots')
 
 class Car(models.Model):
     _name = "practice_mod.car"
     _description = "allows to define the car's caracteristics"
 
-    name = fields.Char(string = 'Plate', size = 7)
-    model_car = fields.Char(string = 'Model')
-    built_date = fields.Date(string = 'Construction Date')
+    name = fields.Char(string='Plate', size=7, required=True)
+    model_car = fields.Char(string='Model', required=True)
+    built_date = fields.Date(string='Construction Date')
     consumption_gas = fields.Float(string='Gas Consumption', digits=(4, 1), default=0.0, help='Media of consumption 100km')
     #store=True is not convenient in this case
     years = fields.Integer(string = 'Years', compute = '_get_years')
@@ -50,7 +50,7 @@ class Maintenance(models.Model):
     _order = 'date'
 
     #name = fields.Char()
-    maintenance_date = fields.Date(string = 'Date', default = fields.date.today())
+    maintenance_date = fields.Date(string='Date', required=True, default=fields.date.today())
     maintenance_type = fields.Selection(string='Type', selection=[('w','wash'),('c','check'),('m','mechanics'),('p','painting')], default='w')
-    maintenance_price = fields.Float(string='Price', digits=(8, 2), help='Maintenace total price')
+    maintenance_price = fields.Float(string='Price', digits=(8, 2), help='Maintenance total price')
 
