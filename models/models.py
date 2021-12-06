@@ -24,8 +24,13 @@ class Parking(models.Model):
     _description = "Allows to define parking caracteristics"
 
     #default search descriptive field
-    name = fields.Char(string='Direction', required=True)
-    spots = fields.Integer(string='Spots')
+    name = fields.Char(string='Address', required=True)
+    spots = fields.Integer(string='Spots', required=True)
+
+    #table relations
+    car_id = fields.One2many(
+        comodel_name='practice_mod.car',
+        inverse_name='parking_id', string='Cars list')
 
     #table relations
     car_id = fields.One2many(
@@ -52,7 +57,7 @@ class Car(models.Model):
     #inverse_name to parking with relational field Many2one
     parking_id = fields.Many2one(
         comodel_name='practice_mod.parking',
-        string='Parking',
+        string='Parking_id',
         required=True)
 
     #relation Many2many with maintenance

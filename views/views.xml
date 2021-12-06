@@ -69,6 +69,34 @@
         </tree>
       </field>
     </record>
+              <!--Form View Parking-->
+    <record id="practice_mod.parking_form_view" model="ir.ui.view">
+      <field name="name">practice_mod.parking.view.form</field>
+      <field name="model">practice_mod.parking</field>
+      <field name="arch" type="xml">
+        <form string="Parking Form">
+          <sheet>
+            
+            <div class='oe_title'>
+              <!--<label class='oe_edit_only' for='name' string='Address'/>-->
+              <h1>
+                <field name="name" placeholder='Address' />
+              </h1>
+            </div>
+            <group>
+              <group>
+                  <separator string='General Information'/>
+                  <field name='spots'/>
+              </group>
+            </group>
+            <group>
+              <field name='car_id'/>
+            </group>
+            
+          </sheet>
+        </form>
+      </field>
+    </record>
 
     <!--Car Views-->
 
@@ -86,6 +114,51 @@
       </field>
     </record>
 
+    <!--Form View Car-->
+
+    <record id="practice_mod.car_form_view" model="ir.ui.view">
+      <field name="name">practice_mod.car.view.form</field>
+      <field name="model">practice_mod.car</field>
+      <field name="arch" type="xml">
+        <form string="Info Car Form">
+          <sheet>
+            <separator string='Car Info'/>
+            <group>
+              <group>
+                <field name='name'/>
+                <field name='model_car'/>
+                <field name='built_date'/>
+                <field name='consumption_gas'/>
+              </group>
+              <group>
+                <field name='years'/>
+                <field name='damaged'/>
+                <field name='parking_id'/>
+              </group>
+            </group>
+            <group>
+              <field name='maintenance_ids'/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record id="practice_mod_car_view_search" model="ir.ui.view">
+      <field name="name">practice_mod.car.view.search</field>
+      <field name="model">practice_mod.car</field>
+      <field name="arch" type="xml">
+        <search string="Search Car">
+        <field name="model_car" string="Car Model"/>
+        <field name="built_date" string="Built Date"/>
+        <filter name="damaged" string="Damaged" domain="[('damaged', '=', True)]"/>
+        <group>
+          <filter name="group_by_damaged" string="group_damaged" context="{'group_by': 'damaged'}" />
+        </group>
+        </search>
+      </field>
+    </record>
+
     <!--Maintenance Views-->
 
     <record model="ir.ui.view" id="practice_mod.maintenance_list_view">
@@ -95,8 +168,64 @@
         <tree>
           <field name="maintenance_date"/>
           <field name="maintenance_type"/>
-          <field name="maintenance_price"/>
         </tree>
+      </field>
+    </record>
+
+    <!--Form View Maintenance-->
+
+    <record id="practice_mod.maintenance_form_view" model="ir.ui.view">
+      <field name="name">practice_mod.maintenance.view.form</field>
+      <field name="model">practice_mod.maintenance</field>
+      <field name="arch" type="xml">
+        <form string="Info Car Form">
+          <sheet>
+            <separator string='Maintenance Sheet'/>
+            <group>
+              <group>
+                <!--<field name='name'/>-->
+                <field name='maintenance_date'/>
+                <field name='maintenance_type'/> 
+              </group>
+              <group>
+                <field name='maintenance_price'/>
+                <!--<field name='parking_id'/>-->
+              </group>
+            </group>
+            <group>
+              <field name='car_ids'/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <!-- Search View Maintenance -->
+
+    <record id="practice_mod_maintenance_view_search" model="ir.ui.view">
+      <field name="name">practice_mod.maintenance.view.search</field>
+      <field name="model">practice_mod.maintenance</field>
+      <field name="arch" type="xml">
+        <search string="Search Maintenance">
+          <field name="maintenance_type" string="Maintenance Type"/>
+          <field name="maintenance_price" string="Maintenance Price" widget="selection"/>
+          <group>
+            <filter name="group_by_maintenance_type" string="Maintenance Type" context="{'group_by':'maintenance_type'}"/>
+          </group>
+        </search>
+      </field>
+    </record>
+
+   <!--Calendar View-->
+
+    <record id="practice_mod.maintenance_view_calendar" model="ir.ui.view">
+      <field name="name">practice_mod.maintenance.view.calendar</field>
+      <field name="model">practice_mod.maintenance</field>
+      <field name="arch" type="xml">
+        <calendar string="Maintenance" date_start="maintenance_date" color="maintenance_type" mode="month">
+          <field name="maintenance_type"/>
+          <field name="maintenance_price"/>
+        </calendar>
       </field>
     </record>
 
@@ -119,7 +248,8 @@
     <record model="ir.actions.act_window" id="practice_mod.maintenance_action_window">
       <field name="name">Maintenance</field>
       <field name="res_model">practice_mod.maintenance</field>
-      <field name="view_mode">tree,form</field>
+      <field name="view_mode">tree,form,calendar</field>
+      <field name="context">{'search_default_group_by_maintenance_type':False}</field>
     </record>
 
     <!-- Top menu item -->
