@@ -26,5 +26,71 @@
             <field name="value">40</field>
           </record>
 -->
+      <record id="parking1" model="practice_mod.parking">
+        <field name="name">5th avenue NY</field>
+        <field name="spots">8</field>
+      </record>
+
+      <record id="parking2" model="practice_mod.parking">
+        <field name="name">Main Road LA</field>
+        <field name="spots">10</field>
+      </record>
+
+      <record id="car1" model="practice_mod.car">
+        <field name="name">543210A</field>
+        <field name="model_car">Mercedez A</field>
+        <field name="built_date">1994-09-17</field>
+        <field name="consumption_gas">12.5</field>
+        <field name="damaged">True</field>
+        <field name="description">Classic car, good specs</field>
+        <field name="parking_id" ref="parking1"></field>
+      </record>
+
+      <record id="car2" model="practice_mod.car">
+        <field name="name">543210B</field>
+        <field name="model_car">Mercedez B</field>
+        <field name="built_date">1990-02-11</field>
+        <field name="consumption_gas">10.3</field>
+        <field name="damaged">False</field>
+        <field name="description">Car for adventure</field>
+        <field name="parking_id" ref="parking1"></field>
+      </record>
+
+      <record id="car3" model="practice_mod.car">
+        <field name="name">543210C</field>
+        <field name="model_car">Lambo A</field>
+        <field name="built_date">2005-06-22</field>
+        <field name="consumption_gas">16.3</field>
+        <field name="damaged">False</field>
+        <field name="description">Perfect for speed</field>
+        <field name="parking_id" ref="parking1"></field>
+      </record>
+
+      <record id="car4" model="practice_mod.car">
+        <field name="name">543210D</field>
+        <field name="model_car">Ferrari A</field>
+        <field name="built_date">2010-11-25</field>
+        <field name="consumption_gas">9.6</field>
+        <field name="damaged">True</field>
+        <field name="description">Money worth</field>
+        <field name="parking_id" ref="parking2"></field>
+      </record>
+
+      <record id="car5" model="practice_mod.car">
+        <field name="name">543210E</field>
+        <field name="model_car">Mazda C</field>
+        <field name="built_date">1985-08-15</field>
+        <field name="consumption_gas">25.4</field>
+        <field name="damaged">True</field>
+        <field name="description">Old is the new trend</field>
+        <field name="parking_id" ref="parking2"></field>
+      </record>
+
+      <record id="maintenance1" model="practice_mod.maintenance">
+        <field name="maintenance_date" eval="datetime.now()"/>
+        <field name="maintenance_type">w</field>
+        <field name="maintenance_price">20</field>
+        <field name="car_ids" eval="[(6, 0,[ref('car1'), ref('car3')])]"/>
+      </record>
     </data>
 </odoo>
