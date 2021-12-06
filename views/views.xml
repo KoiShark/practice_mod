@@ -213,6 +213,8 @@
       <field name="view_mode">tree,form</field>
     </record>
 
+    <!--Calendar View-->
+
     <record model="ir.actions.act_window" id="practice_mod.maintenance_action_window">
       <field name="name">Maintenance</field>
       <field name="res_model">practice_mod.maintenance</field>
