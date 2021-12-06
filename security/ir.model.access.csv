@@ -1,2 +1,5 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_practice_mod_practice_mod,practice_mod.practice_mod,model_practice_mod_practice_mod,base.group_user,1,1,1,1
+access_practice_mod_maintenance_user,practice_mod.maintenance.user,model_practice_mod_maintenance,practice_mod.group_practice_mod_user,1,1,1,1
+access_practice_mod_car_user,practice_mod.car.user,model_practice_mod_car,practice_mod.group_practice_mod_user,1,1,1,1
+access_practice_mod_parking_user,practice_mod.parking.user,model_practice_mod_parking,practice_mod.group_practice_mod_user,1,0,0,0
+access_practice_mod_parking_director,practice_mod.parking.director,model_practice_mod_parking,practice_mod.group_practice_mod_director,1,1,1,1

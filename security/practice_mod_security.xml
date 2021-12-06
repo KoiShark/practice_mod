@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<data>
+<!-- Defining a security category -->
+    <record model="ir.module.category" id="practice_mod.module_category_practice_mod">
+        <field name="name">Practice_mod</field>
+        <field name="description">Helping to manage your garage</field>
+        <field name="sequence">100</field>
+    </record>
+
+    <record model="res.groups" id="group_practice_mod_user">
+        <field name="name">User</field>
+        <field name="category_id" ref="practice_mod.module_category_practice_mod"/>
+        <field name="comment">Users that manage cars and maintenance</field>
+        <!-- if we want to add all the users to a group-->
+        <!-- <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/> -->
+    </record>
+
+    <record model="res.groups" id="group_practice_mod_director">
+        <field name="name">Director</field>
+        <field name="category_id" ref="practice_mod.module_category_practice_mod"/>
+        <field name="comment">Users that manage parking</field>
+        <!-- group director is also member of the group user -->
+        <field name="implied_ids" eval="[(4, ref('group_practice_mod_user'))]"/>
+        <!-- Adding Users that administer Odoo -->
+        <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]" />
+
+    </record>
+</data>
+</odoo>
