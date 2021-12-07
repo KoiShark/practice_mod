@@ -35,4 +35,5 @@
     ],
     # defining it as an application
     'application': True,
+    'license': 'LGPL-3',
 }
